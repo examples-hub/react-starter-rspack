@@ -57,7 +57,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           # static_site_generator: next
-      - name: Install dependencies
+       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build react
         # run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
