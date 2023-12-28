@@ -42,4 +42,4 @@ jobs:
         with:
           branch: gh-pages
           folder: build
-          token: "${{ secrets.EXAMPLES202312 }}"
+          token: "${{ secrets.EXAMPLES20231229 }}"
