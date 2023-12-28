@@ -4,8 +4,7 @@ name: Deploy React to GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: [$default-branch]
-
+    branches: [ 'main' ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -70,9 +69,9 @@ jobs:
 
   # Deployment job
   deploy:
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-22.04
     needs: build
     steps:
