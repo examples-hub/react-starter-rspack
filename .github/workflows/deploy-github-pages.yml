@@ -43,6 +43,6 @@ jobs:
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-spages
+          branch: gh-pages
           folder: build
           token: '${{ secrets.EXAMPLES20231229 }}'
