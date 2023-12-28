@@ -4,27 +4,30 @@ on:
   push:
     branches:
       - main
-      - dev
+
+permissions:
+  contents: write
 
 jobs:
   Build:
     # 👉🏻 install + build
     runs-on: ubuntu-22.04
     steps:
-    - name: checkout code
-      uses: actions/checkout@v2
-    - name: setup node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18.18'
-    - run: npm install && npm run build
-    # 上传打包好的文件，所以下一步可以使用
-    - name: upload files
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-pages
-        path: build
-        retention-days: 1
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.18'
+      - name: Install and Build
+        run: npm install && npm run build
+      # 上传打包好的文件，所以下一步可以使用
+      - name: upload files
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-pages
+          path: build
+          retention-days: 1
   Deploy:
     # 👉🏻 deploy to github pages
     needs: Build # 确保build 阶段完成
@@ -38,8 +41,8 @@ jobs:
           name: build-pages
           path: build
       - name: deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
+          branch: gh-spages
           folder: build
-          token: "${{ secrets.EXAMPLES20231229 }}"
+          token: '${{ secrets.EXAMPLES20231229 }}'
