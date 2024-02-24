@@ -7,7 +7,7 @@ import { App } from './app';
 
 const root = createRoot(document.getElementById('root')!);
 
-const render = (Component) => {
+const renderREle = (Component) => {
   root.render(
     <StrictMode>
       <Component />
@@ -15,4 +15,4 @@ const render = (Component) => {
   );
 };
 
-render(App);
+renderREle(App);

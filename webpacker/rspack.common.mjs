@@ -1,30 +1,34 @@
 // shared webpack config object for dev, build, prod, demo...
+import rspack from '@rspack/core';
 
-// import type { Configuration } from '@rspack/cli';
-
-// const config: Configuration = {
+/** @type {import("@rspack/cli").Configuration} */
 export const commonConfig = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.(t|j)sx$/,
         use: {
           loader: 'builtin:swc-loader',
           options: {
+            isModule: true,
             sourceMap: true,
             jsc: {
+              target: 'es2020',
+              loose: false,
+              externalHelpers: true,
+              preserveAllComments: false,
               parser: {
                 syntax: 'typescript',
                 jsx: true,
               },
-              externalHelpers: true,
-              preserveAllComments: false,
               transform: {
                 react: {
-                  runtime: 'automatic',
+                  // runtime: 'automatic',
+                  runtime: 'classic',
                   throwIfNamespace: true,
                   useBuiltins: false,
                 },
+                // useDefineForClassFields: false,
               },
             },
           },
@@ -36,13 +40,16 @@ export const commonConfig = {
         use: {
           loader: 'builtin:swc-loader',
           options: {
+            isModule: true,
             sourceMap: true,
             jsc: {
+              target: 'es2020',
+              loose: false,
+              externalHelpers: true,
+              preserveAllComments: false,
               parser: {
                 syntax: 'typescript',
               },
-              externalHelpers: true,
-              preserveAllComments: false,
             },
           },
         },
@@ -67,17 +74,22 @@ export const commonConfig = {
       },
     ],
   },
-  optimization: {
-    // Disabling minification because it takes too long on CI
-    minimize: false,
-  },
   plugins: [
     // new ReactRefreshPlugin(),
+    new rspack.ProgressPlugin(),
   ],
+  resolve: {
+    extensions: ['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs'],
+  },
   experiments: {
     // css: true,
     rspackFuture: {
+      newTreeshaking: true,
       // disableApplyEntryLazily: true,
     },
+  },
+  optimization: {
+    // Disabling minification because it takes too long on CI
+    minimize: false,
   },
 };

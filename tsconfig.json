@@ -9,6 +9,7 @@
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "downlevelIteration": true,
     "importHelpers": true,

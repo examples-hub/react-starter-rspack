@@ -57,13 +57,13 @@ const demoConfig = merge(
       new rspack.HtmlRspackPlugin({
         template: './public/react-app.html',
       }),
-      new rspack.CopyRspackPlugin({
-        patterns: [
-          {
-            from: 'public',
-          },
-        ],
-      }),
+      // new rspack.CopyRspackPlugin({
+      //   patterns: [
+      //     {
+      //       from: 'public',
+      //     },
+      //   ],
+      // }),
     ],
   },
 );
