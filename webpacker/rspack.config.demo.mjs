@@ -1,9 +1,11 @@
-import { merge } from 'webpack-merge';
-
 import rspack from '@rspack/core';
+
+import path from 'node:path';
+import { merge } from 'webpack-merge';
 
 import { devServerConfig } from './rspack.server.mjs';
 
+/** @type {import('@rspack/cli').Configuration} */
 const demoConfig = merge(
   devServerConfig,
 
@@ -13,7 +15,8 @@ const demoConfig = merge(
     },
     output: {
       filename: 'main.js',
-      path: './dist',
+      path: path.resolve(import.meta.dirname, '../dist'),
+      // path: path.resolve(process.cwd(), 'dist')
       // path: path.resolve(__dirname, '../build'),
     },
     module: {
@@ -52,6 +55,8 @@ const demoConfig = merge(
     optimization: {
       // Disabling minification because it takes too long on CI
       minimize: false,
+      moduleIds: 'named',
+      chunkIds: 'named',
     },
     plugins: [
       new rspack.HtmlRspackPlugin({

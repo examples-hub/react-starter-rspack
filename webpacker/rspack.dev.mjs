@@ -19,7 +19,8 @@ const isEnvReactHot = checkAppEnv('reacthot');
 
 export const devConfig = merge(commonConfig, {
   mode: 'development',
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
+  devtool: 'eval',
   // target: process.env.NODE_ENV === 'production' ? 'browserslist' : 'web',
   target: 'web',
   plugins: [

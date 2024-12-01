@@ -1,9 +1,11 @@
-import { merge } from 'webpack-merge';
-
 import rspack from '@rspack/core';
+
+import path from 'node:path';
+import { merge } from 'webpack-merge';
 
 import { prodConfig } from './rspack.prod.mjs';
 
+/** @type {import('@rspack/cli').Configuration} */
 const prodOutputConfig = merge(prodConfig, {
   entry: {
     // main: path.resolve(__dirname, '../src/render.tsx'),
@@ -11,7 +13,8 @@ const prodOutputConfig = merge(prodConfig, {
   },
   output: {
     filename: 'main.js',
-    path: './build',
+    path: path.resolve(import.meta.dirname, '../build'),
+    // path: './build',
     // path: path.resolve(__dirname, '../build'),
     module: true,
     libraryTarget: 'module',
