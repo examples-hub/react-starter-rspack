@@ -4,9 +4,10 @@
 
 ## features
 
-- minimal
+- minimal boilerplate
 - built with react + rspack from scratch, no rsbuild
-- support importing css/scss/svg
+- support to import css/scss/svg
+- support to start simple express server
 
 ## quickstart
 

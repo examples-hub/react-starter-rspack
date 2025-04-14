@@ -1,4 +1,5 @@
-module.exports = {
+// module.exports = {
+export default {
   // verbose: true,
   // roots: ['<rootDir>'],
   testEnvironment: 'jsdom',

@@ -10,6 +10,7 @@ lib/
 
 target/
 build/
+out/
 tomcat.**
 
 *.log

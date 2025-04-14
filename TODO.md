@@ -6,9 +6,12 @@
 
 ## todo
 
-- [ ] add unit tests with jest
+- [ ] support to import json
 
 - [ ] migrate lint to oxlint
+
+- [ ] fix jest testing setup
+- [ ] add unit tests with jest
 
 ## later
 

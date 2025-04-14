@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-export const CardContent = ({ text = '', children }) => {
+type CardContentProps = {
+  text?: string;
+  children?: React.ReactNode;
+};
+
+export const CardContent = ({ text = '', children }: CardContentProps) => {
   return (
     <div>
       <h4>content title</h4>

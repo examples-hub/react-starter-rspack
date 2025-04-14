@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-const CheckboxWithLabel = ({ labelOn, labelOff }) => {
-  const [isChecked, setIsChecked] = useState(false);
+type CheckboxWithLabelProps = {
+  labelOn: string;
+  labelOff: string;
+};
 
-  const onChange = () => {
+const CheckboxWithLabel = ({ labelOn, labelOff }: CheckboxWithLabelProps) => {
+  const [isChecked, setIsChecked] = useState(false),
+
+   onChange = () => {
     setIsChecked(!isChecked);
   };
 

@@ -28,6 +28,11 @@ const prodOutputConfig = merge(prodConfig, {
     //   ],
     // }),
   ],
+  optimization: {
+    // moduleIds: 'named',
+    // chunkIds: 'named',
+    minimize: true,
+  },
   // devServer: {
   //   contentBase: path.resolve(__dirname, '../build'),
   // },

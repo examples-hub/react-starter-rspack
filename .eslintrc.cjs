@@ -27,9 +27,6 @@ module.exports = {
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   // ESLint extends configurations recursively
   extends: [
-    'alloy',
-    'alloy/react',
-    'alloy/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -46,7 +43,7 @@ module.exports = {
     'no-promise-executor-return': 1,
     'no-eq-null': 1,
     eqeqeq: 1,
-    'one-var': 1,
+    'one-var': 0,
     'guard-for-in': 1,
     complexity: 1,
     'prefer-const': 1,

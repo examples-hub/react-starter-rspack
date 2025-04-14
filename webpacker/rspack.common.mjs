@@ -85,12 +85,11 @@ export const commonConfig = {
     // css: true,
     // outputModule: true,
     rspackFuture: {
-      bundlerInfo:{force:true},
+      bundlerInfo: { force: true },
       // newTreeshaking: true,
       // disableApplyEntryLazily: true,
     },
     // futureDefaults: true,
-
   },
   optimization: {
     // Disabling minification because it takes too long on CI
