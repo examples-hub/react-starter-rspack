@@ -34,12 +34,8 @@
     "serve:prod": "npm run build && node ./target/server.mjs",
     "start": "npm run demo",
     "test": "cross-env REACT_APP_ENV=react jest --config ./jest.config.js",
-    "typecheck": "tsc --noEmit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": " npm run lint && npm run format"
-    }
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
   },
   "browserslist": [
     "defaults",
