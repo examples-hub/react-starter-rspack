@@ -23,6 +23,13 @@ bookmarks.json
 # repos/
 repos-caches/
 
+.env.local
+.env.test
+.env.private
+.bak
+.bak.**
+
+
 # auto-generated files
 .idea/
 *.iml

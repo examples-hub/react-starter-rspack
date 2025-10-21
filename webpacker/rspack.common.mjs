@@ -1,6 +1,8 @@
 // shared webpack config object for dev, build, prod, demo...
 import rspack from '@rspack/core';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 /** @type {import("@rspack/cli").Configuration} */
 export const commonConfig = {
   module: {
@@ -16,7 +18,7 @@ export const commonConfig = {
               target: 'es2020',
               loose: false,
               externalHelpers: true,
-              preserveAllComments: false,
+              preserveAllComments: isDev ? true : false,
               parser: {
                 syntax: 'typescript',
                 jsx: true,
@@ -26,7 +28,9 @@ export const commonConfig = {
                   // runtime: 'automatic',
                   runtime: 'classic',
                   throwIfNamespace: true,
-                  useBuiltins: false,
+                  useBuiltins: true,
+                  // development: isDev,
+                  // refresh: isDev
                 },
                 // useDefineForClassFields: false,
               },
@@ -46,7 +50,7 @@ export const commonConfig = {
               target: 'es2020',
               loose: false,
               externalHelpers: true,
-              preserveAllComments: false,
+              preserveAllComments: isDev ? true : false,
               parser: {
                 syntax: 'typescript',
               },
@@ -64,7 +68,18 @@ export const commonConfig = {
         ],
       },
       {
-        test: /\.(jpg|jpeg|png|gif|svg|ico)$/,
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader', options: { esModule: false } },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|ico)$/,
+        type: 'asset',
+      },
+      {
+        test: /\.(svg)$/,
         type: 'asset',
       },
       {
@@ -74,6 +89,7 @@ export const commonConfig = {
       },
     ],
   },
+
   plugins: [
     // new ReactRefreshPlugin(),
     new rspack.ProgressPlugin(),
@@ -82,17 +98,17 @@ export const commonConfig = {
     extensions: ['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs'],
   },
   experiments: {
-    // css: true,
+    // css: false,
     // outputModule: true,
     rspackFuture: {
       bundlerInfo: { force: true },
       // newTreeshaking: true,
-      // disableApplyEntryLazily: true,
     },
-    // futureDefaults: true,
   },
   optimization: {
     // Disabling minification because it takes too long on CI
     minimize: false,
+    // removeAvailableModules: true,
+    // mergeDuplicateChunks: true,
   },
 };

@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 // app.use('/health-check', healthCheckRouter);
 app.get('/ping', (req, res) => {
-  res.send('Hello World ' + new Date().toLocaleString());
+  res.send('Hello World ' + new Date().toISOString());
 });
 app.use(express.static('build'));
 
