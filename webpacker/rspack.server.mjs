@@ -12,6 +12,7 @@ export const devServerConfig = merge(devConfig, {
     port: 8999,
     // hot: true,
     historyApiFallback: true,
+    allowedHosts: 'all',
     // compress: true,
     // inline: true,
     // clientLogLevel: 'silent',
