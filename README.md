@@ -1,6 +1,6 @@
 # react-starter-rspack
 
-> quickstart boilerplate for react using typescript/rspack
+> quickstart boilerplate for react using typescript/rspack/tailwindcss
 
 ## features
 

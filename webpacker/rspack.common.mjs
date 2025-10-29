@@ -1,5 +1,7 @@
 // shared webpack config object for dev, build, prod, demo...
 import rspack from '@rspack/core';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -63,7 +65,20 @@ export const commonConfig = {
         test: /\.s(a|c)ss$/,
         use: [
           { loader: 'style-loader', options: { esModule: false } },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [tailwindcss, autoprefixer],
+              },
+            },
+          },
           'sass-loader',
         ],
       },
@@ -71,7 +86,20 @@ export const commonConfig = {
         test: /\.css$/,
         use: [
           { loader: 'style-loader', options: { esModule: false } },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [tailwindcss, autoprefixer],
+              },
+            },
+          },
         ],
       },
       {
